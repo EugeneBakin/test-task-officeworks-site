@@ -1,3 +1,8 @@
+body {
+	font-family: "Open Sans", sans-serif;
+	line-height: 1.5em;
+}
+
 header {
 	height: 80px;
 	box-sizing: border-box;
@@ -64,9 +69,23 @@ section {
 	margin: auto;
 	left: 0;
 	right: 0;
-	top: 46px;
+	bottom:198px;
 }
 
 .pass-list__item__name {
-	margin-bottom: 25px;
+
 }
+
+.pass-list__item__description {
+	font-size: 14px;
+	position: absolute;
+	top: 175px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 190px;
+	text-align: center;
+}
+
+
+
