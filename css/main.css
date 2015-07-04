@@ -1,6 +1,6 @@
 body {
 	font-family: "Open Sans", sans-serif;
-	line-height: 1.5em;
+	line-height: 1.2em;
 	position: relative;
 	background-color: #F7F8FA;
 }
@@ -16,14 +16,15 @@ body {
 	height: 42px;
 	line-height: 42px;
 	font-size: 14px;
-	margin: 0 15px;
+	margin: 0 1.2em;
 	text-decoration: none;
-	color: white;
+	color: #84CBEB;
 }
 
 .menu__list__item--active a,
 .menu__list__item a:hover {
 	border-bottom-color: white;
+	color: white;
 }
 
 .menu__list__item:first-child a {
@@ -66,9 +67,31 @@ main {
 	width: 1024px;
 }
 
-.pass-list {
-	padding-top:35px;
-	padding-left: 33px;
+main h1 {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 800;
+	font-size: 24px;
+	color: #414752;
+	position: absolute;
+	left: 40px;
+	top: 60px;
+}
+
+.page-name {
+	color:  #414752;
+	font-size: 16px;
+	font-weight: 600;
+	font-family: "Open Sans", sans-serif;
+	position: absolute;
+	display: inline-block;
+	top: 26px;
+	left: 135px;
+}
+
+.pass-list{
+	position: absolute;
+	top: 90px;
+	left: 30px;
 }
 
 .pass-list__item {
@@ -81,7 +104,7 @@ main {
 }
 
 .pass-list__item:hover {
-	border: 8px solid blue;
+	border: 8px solid #CDE5F1;
 }
 
 .pass-list__item > a {
@@ -89,14 +112,14 @@ main {
 	width: 100%;
 	height: 100%;
 	display: block;
-	border: 1px solid black;
+	border: 1px solid #D4D5D7;
 	position: relative;
 	text-decoration: none;
 	color: black;
 	text-align: center;
 	padding-top: 130px;
-	padding-left: 23px;
-	padding-right: 23px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .pass-list__item__image > img{
@@ -108,17 +131,21 @@ main {
 }
 
 .pass-list__item__name {
-
+	font-size: 16px;
+	color: #414752;
+	font-weight: 600;
 }
 
 .pass-list__item__description {
+	font-family: 'Open Sans';
+	color: #A0A3A8;
 	font-size: 14px;
 	position: absolute;
 	top: 175px;
 	left: 0;
 	right: 0;
 	margin: auto;
-	width: 190px;
+	width: 180px;
 	text-align: center;
 }
 
@@ -129,6 +156,10 @@ main {
 	bottom: 0;
 	left: 40px;
 }
+
+
+
+
 
 
 
