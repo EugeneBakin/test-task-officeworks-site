@@ -11,14 +11,14 @@ body {
 
 .menu__list__item a {
 	display: inline-block;
-	border-bottom: 3px solid transparent;
-	border-top: 3px solid transparent;
-	height: 42px;
+	border-bottom: 4px solid transparent;
+	border-top: 4px solid transparent;
+	height: 40px;
 	line-height: 42px;
 	font-size: 14px;
-	margin: 0 1.2em;
 	text-decoration: none;
 	color: #84CBEB;
+	margin: 0px 1.6em;
 }
 
 .menu__list__item--active a,
@@ -84,7 +84,7 @@ main h1 {
 	font-family: "Open Sans", sans-serif;
 	position: absolute;
 	display: inline-block;
-	top: 26px;
+	top: 30px;
 	left: 135px;
 }
 
