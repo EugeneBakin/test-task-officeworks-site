@@ -1,34 +1,69 @@
 body {
 	font-family: "Open Sans", sans-serif;
 	line-height: 1.5em;
-}
-
-header {
-	height: 80px;
-	box-sizing: border-box;
-	min-width:1024px;
-	width: 100%;
-	padding-left: 3%;
-	background-color: blue;
-}
-
-nav {
-	background-color: red;
-}
-
-body {
 	position: relative;
+	background-color: #F7F8FA;
 }
 
-section {
+.menu__list__item{
+	display: inline-block;
+}
+
+.menu__list__item a {
+	display: inline-block;
+	border-bottom: 3px solid transparent;
+	border-top: 3px solid transparent;
+	height: 42px;
+	line-height: 42px;
+	font-size: 14px;
+	margin: 0 15px;
+	text-decoration: none;
+	color: white;
+}
+
+.menu__list__item--active a,
+.menu__list__item a:hover {
+	border-bottom-color: white;
+}
+
+.menu__list__item:first-child a {
+	margin-left: 40px;
+}
+
+.main-header {
+	height: 80px;
+	position: absolute;
+	left:0;
+	right:0;
+	margin: auto;
+	box-sizing: border-box;
+	width:1024px;
+}
+
+.menu__list {
+	position: absolute;
+	width: 1024px;
+	left:0;
+	right:0;
+	margin: auto;
+}
+
+.menu {
+	position: absolute;
+	background-color: #2498D1;
+	top: 80px;
+	height: 48px;
+	width: 100%;
+}
+
+main {
 	position: absolute;
 	margin: auto;
 	height: 400px;
-	top:165px;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 1024px
+	top: 128px;
+	left: 0px;
+	right: 0px;
+	width: 1024px;
 }
 
 .pass-list {
@@ -85,6 +120,14 @@ section {
 	margin: auto;
 	width: 190px;
 	text-align: center;
+}
+
+.logo > img {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 40px;
 }
 
 
