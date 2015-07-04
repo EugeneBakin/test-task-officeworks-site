@@ -5,6 +5,22 @@ body {
 	background-color: #F7F8FA;
 }
 
+.logo {
+	display: inline-block;
+	position: absolute;
+	top: 17px;
+	left: 40px;
+}
+
+.logo img {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
 .menu__list__item{
 	display: inline-block;
 }
@@ -31,40 +47,23 @@ body {
 	margin-left: 40px;
 }
 
-.main-header {
-	height: 80px;
-	position: absolute;
-	left:0;
-	right:0;
-	margin: auto;
-	box-sizing: border-box;
-	width:1024px;
+.u__center {
+	margin: 0 auto;
+	position: relative;
 }
 
-.menu__list {
-	position: absolute;
+.u__widthed {
 	width: 1024px;
-	left:0;
-	right:0;
-	margin: auto;
+}
+
+.main-header {
+	height: 80px;
+	box-sizing: border-box;
 }
 
 .menu {
-	position: absolute;
 	background-color: #2498D1;
-	top: 80px;
 	height: 48px;
-	width: 100%;
-}
-
-main {
-	position: absolute;
-	margin: auto;
-	height: 400px;
-	top: 128px;
-	left: 0px;
-	right: 0px;
-	width: 1024px;
 }
 
 main h1 {
@@ -72,9 +71,6 @@ main h1 {
 	font-weight: 800;
 	font-size: 24px;
 	color: #414752;
-	position: absolute;
-	left: 40px;
-	top: 60px;
 }
 
 .page-name {
@@ -82,16 +78,15 @@ main h1 {
 	font-size: 16px;
 	font-weight: 600;
 	font-family: "Open Sans", sans-serif;
-	position: absolute;
 	display: inline-block;
+	position: absolute;
 	top: 30px;
-	left: 135px;
+	left: 136px;
 }
-
 .pass-list{
 	position: absolute;
-	top: 90px;
-	left: 30px;
+	top: 88px;
+	left: 32px;
 }
 
 .pass-list__item {
@@ -117,7 +112,7 @@ main h1 {
 	text-decoration: none;
 	color: black;
 	text-align: center;
-	padding-top: 130px;
+	padding-top: 135px;
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -149,17 +144,13 @@ main h1 {
 	text-align: center;
 }
 
-.logo > img {
+.pass-list-header {
 	position: absolute;
-	margin: auto;
-	top: 0;
-	bottom: 0;
+	top:60px;
 	left: 40px;
 }
 
 
-
-
-
-
-
+#pass-form {
+	display: none;
+}
