@@ -56,9 +56,9 @@ body {
 	width: 1024px;
 }
 
-.main-header {
+.main-header {    
 	height: 80px;
-	box-sizing: border-box;
+	border-bottom: 1px solid #C2C3C5;
 }
 
 .menu {
@@ -151,6 +151,201 @@ main h1 {
 }
 
 
-#pass-form {
+#choose-type {
 	display: none;
+}
+
+.pass-form-header {
+	position: absolute;
+	top: 60px;
+	left: 280px;
+}
+
+.pass-form {
+	width: 465px;
+	margin: 85px auto 0 auto;
+}
+
+.pass-form__fieldset + .pass-form__fieldset{
+	margin-top: 87px;
+
+}
+
+.pass-form__fieldset {
+	background-color: #FFFFFF;
+	border: 1px solid #D4D5D7;
+	padding: 15px 25px 10px 15px;
+}
+
+.pass-form__fieldset__legend {
+	color: #414752;
+	font-size: 24px;
+	font-weight: 600;
+	width: 0;
+	position: relative;
+	top: -25px;
+	left: -15px;
+	white-space: nowrap;
+}
+
+.pass-form__label {
+	margin-bottom: 15px;
+	display: block;
+}
+
+.pass-form__label--half {
+	display: inline-block;
+	margin-bottom: 15px;
+	margin-right: 22px;
+	width: 198px;
+}
+
+.pass-form__label--half ~ .pass-form__label--half {
+	margin-right: -10px;
+}
+
+.pass-form__label input,
+.pass-form__label--half input {
+	margin-top: 5px;
+	height: 44px;
+	display: block;
+	width: 100%;
+	border: 1px solid #D4D5D7;
+	border-radius: 5px;
+}
+
+.pass-form__person {
+	margin-bottom: 25px;
+}
+
+.pass-form__person:last-of-type {
+	margin-bottom: 13px;
+}
+
+.pass-form__person:after{
+	content: "";
+	display: block;
+	border-bottom: 1px solid #D4D5D7;
+	margin-left: 3px;
+	margin-right: -9px;
+	position: relative;
+	top: 2px;
+}
+
+.button--link {
+	border: none;
+	background: none;
+	display: block;
+	width: 100%;	
+	font-size: 12px;
+	color: #2498D1;
+	font-weight: 600;
+}
+
+.u__radio--just-label {
+	display: none;
+}
+
+.u__radio--just-label + span {
+	cursor: pointer;
+	border: 1px solid #2498D1;
+	border-radius: 15px;
+	padding: 1px 7px;
+	display: inline-block;
+	margin-top: 3px;
+	margin-right: 5px;
+	margin-bottom: 5px;	
+	font-size: 12px;
+	color: #2498D1;
+	font-weight: 600;
+}
+
+.u__radio--just-label:checked + span {
+	color: white;
+	background-color: #2498D1;
+}
+
+.pass-form__range-select label{
+	margin-right: 30px;
+
+}
+.pass-form__range-select input{
+	display: none;
+}
+
+
+.pass-form__range-select {
+	margin-top: 15px;
+}
+
+.pass-form__range-select span{
+	font-size: 16px;
+	font-weight: 600;
+	color: #414752;
+}
+
+.pass-form__range-select input + span::before {
+	content: "";
+	display: inline-block;
+	width: 23px;
+	height: 23px;
+	margin-right: 15px;
+	left: 0px;
+	bottom: 1px;
+	border-radius: 50px;
+	border: 1px solid #D4D5D7;
+	position: relative;
+	top: 7px;
+
+}
+
+
+.pass-form__range-select input:checked + span::before {
+	content: "\2022";
+	color: #2498D1;
+	font-size: 35px;
+	text-align: center;
+	line-height: 23px;
+
+}
+
+.pass-form__range-select:before {
+	content: "";
+	display: block;
+	width: 100%;
+	border-top: 1px solid #D4D5D7;
+	position: relative;
+	bottom: 13px;
+}
+
+.pass-form__range-select {
+	padding-bottom: 10px;
+}
+
+.pass-form label {
+	font-size: 14px;
+	color: #A0A3A8;
+}
+
+.pass-form input {
+	font-size: 16px;
+	color: #414752;
+	padding-left: 8px;
+	font-weight: 600;
+}
+
+.button--action {
+	height:48px;
+	width: 303px;
+	background-color: #2498D1;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	font-size: 16px;
+	font-weight: 600;
+	position: absolute;
+	bottom: -113px;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
