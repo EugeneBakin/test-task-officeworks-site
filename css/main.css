@@ -152,7 +152,8 @@ main h1 {
 
 
 #choose-type,
-#pass-form {
+#pass-form,
+#pass-confirm{
 	display: none;
 }
 
@@ -447,4 +448,50 @@ font-size: 12px;
 color: #2498D1;
 font-weight: 400;
 height: 12px;
+}
+
+.u__background--contrast {
+	background-color: #2498D1;
+}
+
+.u__full-height {
+	height: 100%;
+}
+
+.pass-success__header {
+	font-weight: 300;
+	font-size: 48px;
+	color: white;
+}
+
+.pass-success__link,
+.pass-success__message {
+	font-size: 16px;
+	color: white;
+}
+
+.pass-success__header:before {
+	content: '';
+	background: url(../img/success.png) bottom no-repeat;
+	display: block;
+	margin: auto;
+	margin-bottom: 50px;
+	width: 100px;
+	height: 217px;
+}
+
+.u__text-centered {
+	text-align: center;
+}
+
+.pass-success__message {
+	margin: auto;
+	margin-top: 30px;
+	width: 400px;
+	line-height: 1.5em;
+}
+
+.pass-success__link {
+	position: relative;
+	top: 108px;
 }
