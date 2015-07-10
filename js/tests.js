@@ -39,31 +39,12 @@ var tests = {
 			};		
 		},
 		'tests': {
-			'checkIfRenderMethodIsCalledOnRun': function ( assert ) {
-				var state = Main.State( this.fakeView, function(g,v) { v.render(); } );
-				state.run();
-				assert.strictEqual(1, this.fakeView.rendered, 'fakeView was rendered on run');
-			},
-			'checkIfDestroyMethodIsCalledOnShutDown': function ( assert ) {
-				var state = Main.State( this.fakeView, null, function(g,v) { v.destroy(); } );
-				state.shutDown();
-				assert.strictEqual(1, this.fakeView.destroyed, 'fakeView was destroyed on shutDown');
-			},
 			'checkIfRenderMethodAndDestroyMethodIsCalledOnRunAndShutDownInSimpleCase': function ( assert ) {
 				var state = Main.State( this.fakeView);
 				state.run();
 				assert.strictEqual(1, this.fakeView.rendered, 'fakeView was rendered once, when no behaviour specified');
 				state.shutDown();
 				assert.strictEqual(1, this.fakeView.destroyed, 'fakeView was destroyed once, when no behaviour specified');
-			},
-			'checkIfSubscribeMethodWorks': function ( assert ) {
-				var done = assert.async();
-				var state = Main.State( this.fakeView, function(g,v,publish) {publish('event', 'data');})
-				state.subscribe('event', function(event, data) {
-					assert.strictEqual('data', data, 'data in subscribed event is equal to "data"');
-					done();
-				});
-				state.run();
 			}
 		}
 	},

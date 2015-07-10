@@ -105,48 +105,30 @@
 			</header>
 			<main>
 				<div class="u__center u__widthed">
-					<form class="pass-form">
+					<form class="pass-form" data-template="pass" data-type="pass">
 						<fieldset class="pass-form__fieldset">
 							<legend class="pass-form__fieldset__legend">
 								Данные посетителей
 							</legend>
-							<div class="pass-form__person">
+							<div class="pass-form__person" data-type="pass-visitor" data-template="pass-visitor">
 								<label class="pass-form__label">
 									ФИО
-									<input type="text" name="Name[]" value="Холпков Дмитрий Константинович">
+									<input type="text" name="Name[]" data-field="name" value="">
 								</label>
 								<label class="pass-form__label--half">
 									Телефон
-									<input type="tel" name="Phone[]">
+									<input type="tel" name="Phone[]" data-field="phone">
 								</label>
 								<label class="pass-form__label--half">
 									Почта
-									<input type="email" name="Email[]">
+									<input type="email" name="Email[]" data-field="email">
 								</label>
 								<label class="pass-form__label" >
 									Компания посетителя
-									<input type="text" name="Company[]">
+									<input type="text" name="Company[]" data-field="company">
 								</label>
 							</div>
-							<div class="pass-form__person">
-								<label class="pass-form__label">
-									ФИО
-									<input type="text" name="Name[]">
-								</label>
-								<label class="pass-form__label--half" >
-									Телефон
-									<input type="tel" name="Phone[]">
-								</label>
-								<label class="pass-form__label--half" >
-									Почта
-									<input type="email" name="Email[]">
-								</label>
-								<label class="pass-form__label" >
-									Компания посетителя
-									<input type="text" name="Company[]">
-								</label>
-							</div>
-							<button class="button button--link" type="button">Добавить еще одного пользователя?</button>
+							<button class="button button--link" data-action="add-visitor" type="button">Добавить еще одного пользователя?</button>
 						</fieldset>
 						<fieldset class="pass-form__fieldset">
 							<legend class="pass-form__fieldset__legend">
@@ -154,40 +136,40 @@
 							</legend>
 							<label class="pass-form__label--half pass-form__field__time-start">
 								Начало действия
-								<input type="text" name="DateStart" value="11.06.2015">
+								<input type="text" name="DateStart" value="11.06.2015" data-field="datestart">
 							</label>
 							<label class="pass-form__label--half">
 								Окончание действия
-								<input type="text" name="DateFinish" value="12.06.2015">
+								<input type="text" name="DateFinish" value="12.06.2015" data-field="datefinish">
 							</label>
 							<div>
 								<label>
-									<input class="u__radio--just-label" type="radio" name="js-date-select" value="0" /><span>Сегодня</span>
+									<input class="u__radio--just-label" type="radio" name="js-date-select" value="0" /><span class="js-date-select-label" data-value="0">Сегодня</span>
 								</label>
 								<label>
-									<input class="u__radio--just-label" type="radio" name="js-date-select" value="1" /><span>Завтра</span>
+									<input class="u__radio--just-label" type="radio" name="js-date-select" value="1" /><span class="js-date-select-label" data-value="1">Завтра</span>
 								</label>
 								<label>
-									<input class="u__radio--just-label" type="radio" name="js-date-select" value="2" /><span>Послезавтра</span>
+									<input class="u__radio--just-label" type="radio" name="js-date-select" value="2" /><span class="js-date-select-label" data-value="2">Послезавтра</span>
 								</label>
 							</div>
 							<div>
 								<label>
-									<input class="u__radio--just-label" type="radio" name="js-date-select" value="3" /><span>14 июня, Вс</span>
+									<input class="u__radio--just-label" type="radio" name="js-date-select" value="3" /><span class="js-date-select-label" data-value="3">14 июня, Вс</span>
 								</label>
 								<label>
-									<input class="u__radio--just-label" type="radio" name="js-date-select" value="4" /><span>15 июня, Пн</span>
+									<input class="u__radio--just-label" type="radio" name="js-date-select" value="4" /><span class="js-date-select-label" data-value="4">15 июня, Пн</span>
 								</label>
 								<label>
-									<input class="u__radio--just-label" type="radio" name="js-date-select" value="5" /><span>16 июня, Вт</span>
+									<input class="u__radio--just-label" type="radio" name="js-date-select" value="5" /><span class="js-date-select-label" data-value="5">16 июня, Вт</span>
 								</label>
 							</div>							
 							<div class="pass-form__range-select">
 								<label>
-									<input type="radio" name="js-range-select" value="1" /><span>На один день</span>
+									<input type="radio" name="SingleDate" value="1" /><span>На один день</span>
 								</label>
 								<label>
-									<input type="radio" name="js-range-select" value="2" /><span>На несколько дней</span>
+									<input type="radio" name="SingleDate" value="0" /><span>На несколько дней</span>
 								</label>
 							</div>							
 						</fieldset>
@@ -254,6 +236,7 @@
 		<div id="qunit"></div>
 		<div id="qunit-fixture"></div>
 		<script src="js/jquery.js"></script>
+		<script src="js/models.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/client.js"></script>
 		<script src="js/qunit.js"></script>
