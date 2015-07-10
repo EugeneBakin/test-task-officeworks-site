@@ -196,18 +196,18 @@
 						<section class="pass-confirm__pass">
 							<h2 class="pass-confirm__pass__subheader">Посетители</h2>
 							<ul class="pass-confirm__list">
-								<li class="pass-confirm__list__item">
-									<span class="pass-confirm__list__item__name">Холпков Дмитрий Константинович</span>
-									<span class="pass-confirm__list__item__company">ООО «Энерготехстроймонтаж»</span>
-									<span class="pass-confirm__list__item__phone">7 (999) 234&ndash;12&ndash;18</span>
-									<span class="pass-confirm__list__item__mail">hlopkov@mail.ru</span>
+								<li class="pass-confirm__list__item" data-template="pass-visitor">
+									<span class="pass-confirm__list__item__name" data-field="name">Холпков Дмитрий Константинович</span>
+									<span class="pass-confirm__list__item__company" data-field="company">ООО «Энерготехстроймонтаж»</span>
+									<span class="pass-confirm__list__item__phone" data-field="phone">7 (999) 234&ndash;12&ndash;18</span>
+									<span class="pass-confirm__list__item__mail" data-field="email">hlopkov@mail.ru</span>
 								</li>
 							</ul>
 							<h2 class="pass-confirm__pass__subheader">Время действия пропуска</h2>
-							<div class="pass-confirm__pass__time">11 июня 2015</div>
+							<div class="pass-confirm__pass__time" data-field="time">11 июня 2015</div>
 						</section>
-						<button type="button" class="button button--regular button--narrow u__left">Внести изменения</button>
-						<button type="button" class="button button--action button--narrow u__right"> Заказать пропуск</button>
+						<button type="button" class="button button--regular button--narrow u__left" data-action="back">Внести изменения</button>
+						<button type="button" class="button button--action button--narrow u__right" data-action="success"> Заказать пропуск</button>
 					</div>
 				</div>
 			</main>

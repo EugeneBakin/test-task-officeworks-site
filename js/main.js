@@ -89,12 +89,15 @@ var Main = {
 		currentState.run();
 
 		function setState(stateName) {
-			if (currentState) {
-				currentState.shutDown();
-			};
-			currentState = states[stateName];
-			currentState.run();
-			currentStateName = stateName;
+			if (currentStateName !== stateName) {
+				if (currentState) {
+					currentState.shutDown();
+				};
+				currentState = states[stateName];
+				currentState.run();
+				currentStateName = stateName;
+				router.setState(stateName);
+			}
 		}
 
 		return {

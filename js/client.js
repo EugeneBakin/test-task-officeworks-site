@@ -13,12 +13,12 @@ $(function () {
 
 			var that = this;
 			if (!this.rendered) {
-				this.visitorTemplate = $('[data-template="pass-visitor"]');
+				var section = $('#pass-form');
+				this.clone = section.clone();
+				this.visitorTemplate = section.find('[data-template="pass-visitor"]');
 				this.visitorTemplatePlaceholder = $('<div></div>').insertAfter(this.visitorTemplate).hide();
 				this.visitorTemplate.detach();
 
-				var section = $('#pass-form');
-				this.clone = section.clone();
 				this.rendered = true;
 				section.show();
 
@@ -164,11 +164,78 @@ $(function () {
 	});
 
 	var screen3 = Main.State({
-		render: function() {
-			$('#pass-confirm').show();
+		render: function(globals, action) {
+			var section = $('#pass-confirm');
+
+			var that = this;
+
+			if (!this.rendered) {
+				this.clone = section.clone();
+				this.visitorTemplate = section.find('[data-template="pass-visitor"]');
+				this.visitorTemplatePlaceholder = $('<div></div>').insertAfter(this.visitorTemplate).hide();
+				this.visitorTemplate.detach();
+
+				this.rendered = true;
+				section.show();
+
+				section.find('[data-action="back"]').on('click', function (event) {
+					action('back');
+				});
+
+				section.find('[data-action="success"]').on('click', function (event) {
+					action('success');
+				});
+
+				this.fields = {
+					time: section.find('[data-field="time"]'),
+					visitors: []
+				};
+			}
+
+			globals.pass.visitors.forEach(function (visitor, index) {
+				var template = that.fields.visitors[index] || that.visitorTemplate.clone().insertBefore(that.visitorTemplatePlaceholder);
+
+				var name = template.find('[data-field="name"]');
+				var email = template.find('[data-field="email"]');
+				var company = template.find('[data-field="company"]');
+				var phone = template.find('[data-field="phone"]');
+
+				name.text(visitor.name);
+				email.text(visitor.email);
+				company.text(visitor.company);
+				phone.text(visitor.phone);
+
+				that.fields.visitors[index] = template;
+			});
+
+			var startDate = globals.pass.startDate;
+			var endDate = globals.pass.endDate;
+
+			this.fields.time.text( formatDate(startDate) + ( globals.pass.singleDate ? '' : (' - ' + formatDate(endDate)) ) );
+
+			function formatDate(date) {
+				return padDate(date.getDate()) + ' ' + getMonth(date) + ' ' + date.getFullYear();
+			}
+
+			function padDate(string) {
+				return ('00' + string).slice(('' + string).length);
+			}
+
+			function getMonth(date) {
+				var months = [ 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'	];
+				return months[date.getMonth()];
+			}
 		},
 		destroy: function() {
-			$('#pass-confirm').hide()
+			$('#pass-confirm').replaceWith(this.clone).hide();
+			this.rendered = false;
+		}
+	}, {
+		success: function () {
+			application.setState('pass-success');
+		},
+		back: function () {
+			application.setState('pass-form');
 		}
 	});
 
