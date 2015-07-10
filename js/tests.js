@@ -25,6 +25,52 @@ var tests = {
 			}
 		}
 	},
+	'State' : {
+		'before': function () {
+			this.fakeView = {
+				'rendered': 0,
+				'destroyed': 0,
+				'render': function() {
+					this.rendered++;
+				},
+				'destroy': function() {
+					this.destroyed++;
+				}
+			};		
+		},
+		'tests': {
+			'checkIfRenderMethodIsCalledOnRun': function ( assert ) {
+				var globals = {};
+				var state = Main.State( globals, this.fakeView, function(g,v) { v.render(); } );
+				state.run();
+				assert.strictEqual(1, this.fakeView.rendered, 'fakeView was rendered on run');
+			},
+			'checkIfDestroyMethodIsCalledOnShutDown': function ( assert ) {
+				var globals = {};
+				var state = Main.State( globals, this.fakeView, null, function(g,v) { v.destroy(); } );
+				state.shutDown();
+				assert.strictEqual(1, this.fakeView.destroyed, 'fakeView was destroyed on shutDown');
+			},
+			'checkIfRenderMethodAndDestroyMethodIsCalledOnRunAndShutDownInSimpleCase': function ( assert ) {
+				var globals = {};
+				var state = Main.State( globals, this.fakeView);
+				state.run();
+				assert.strictEqual(1, this.fakeView.rendered, 'fakeView was rendered once, when no behaviour specified');
+				state.shutDown();
+				assert.strictEqual(1, this.fakeView.destroyed, 'fakeView was destroyed once, when no behaviour specified');
+			},
+			'checkIfSubscribeMethodWorks': function ( assert ) {
+				var done = assert.async();
+				var globals = {};
+				var state = Main.State( globals, this.fakeView, function(g,v,publish) {publish('event', 'data');})
+				state.subscribe('event', function(event, data) {
+					assert.strictEqual('data', data, 'data in subscribed event is equal to "data"');
+					done();
+				});
+				state.run();
+			}
+		}
+	},
 	'empty module' : {}
 };
 
