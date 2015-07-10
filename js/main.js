@@ -27,7 +27,7 @@ var Main = {
 			setState: setState
 		};
 	},
-	State: function State ( globals, view, runFunc, shutDownFunc ) {
+	State: function State ( view, runFunc, shutDownFunc ) {
 		var pubsub = $({});
 		var publish = function publish (topic, data) {
 			pubsub.trigger(topic, data);
@@ -47,10 +47,40 @@ var Main = {
 				shutDownFunc( globals, view, publish, run ); 
 		}
 
+		var globals = null;
+		function setGlobals(newGlobals) {
+			globals = newGlobals;
+		}
+
 		return {
 			subscribe: subscribe,
 			run: run,
-			shutDown: shutdown
+			shutDown: shutdown,
+			setGlobals: setGlobals
 		};
+	},
+	Application: function Application ( initialState, globals, states, router ) {
+		router.setState( initialState );
+		router.subscribe( 'state/changed', function(event, stateName) {
+			if (currentState) {
+				currentState.shutDown();
+			};
+			currentState = states[stateName];
+			currentState.run();
+			currentStateName = stateName;
+		} );
+
+		var currentState;
+		var currentStateName = initialState;
+
+		for ( stateName in states ) {
+			states[stateName].setGlobals(globals);
+			if (stateName === initialState ) {
+				currentStateName = stateName;
+				currentState = states[stateName];
+			}
+		}
+
+		currentState.run();
 	}
 };

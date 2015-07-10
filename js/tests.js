@@ -40,20 +40,17 @@ var tests = {
 		},
 		'tests': {
 			'checkIfRenderMethodIsCalledOnRun': function ( assert ) {
-				var globals = {};
-				var state = Main.State( globals, this.fakeView, function(g,v) { v.render(); } );
+				var state = Main.State( this.fakeView, function(g,v) { v.render(); } );
 				state.run();
 				assert.strictEqual(1, this.fakeView.rendered, 'fakeView was rendered on run');
 			},
 			'checkIfDestroyMethodIsCalledOnShutDown': function ( assert ) {
-				var globals = {};
-				var state = Main.State( globals, this.fakeView, null, function(g,v) { v.destroy(); } );
+				var state = Main.State( this.fakeView, null, function(g,v) { v.destroy(); } );
 				state.shutDown();
 				assert.strictEqual(1, this.fakeView.destroyed, 'fakeView was destroyed on shutDown');
 			},
 			'checkIfRenderMethodAndDestroyMethodIsCalledOnRunAndShutDownInSimpleCase': function ( assert ) {
-				var globals = {};
-				var state = Main.State( globals, this.fakeView);
+				var state = Main.State( this.fakeView);
 				state.run();
 				assert.strictEqual(1, this.fakeView.rendered, 'fakeView was rendered once, when no behaviour specified');
 				state.shutDown();
@@ -61,13 +58,45 @@ var tests = {
 			},
 			'checkIfSubscribeMethodWorks': function ( assert ) {
 				var done = assert.async();
-				var globals = {};
-				var state = Main.State( globals, this.fakeView, function(g,v,publish) {publish('event', 'data');})
+				var state = Main.State( this.fakeView, function(g,v,publish) {publish('event', 'data');})
 				state.subscribe('event', function(event, data) {
 					assert.strictEqual('data', data, 'data in subscribed event is equal to "data"');
 					done();
 				});
 				state.run();
+			}
+		}
+	},
+	'Application': {
+		'before': function () {
+			this.emptyView = {
+				render: function(){},
+				destroy: function(){}
+			};
+
+			this.fakeLocation = {'hash': ''};
+			this.fakeWindow = {'location': this.fakeLocation};
+			this.fakeRouter =  Main.HashRouter( '', this.fakeLocation, this.fakeWindow );
+		},
+		'tests': {
+			'checkIfApplicationInitializedDefaultStateAndRendered': function( assert ) {
+				var done = assert.async();
+				var states = {
+					'state1' : Main.State( { render: function() { assert.ok( true, 'state1 ran' ); done(); }, destroy: function() {}} ),
+					'state2' : Main.State( this.emptyView )
+				};
+				Main.Application( 'state1', {}, states, this.fakeRouter );
+			},
+			'checkIfApplicationRespondsToRouterEventsAndChangedStates': function( assert ) {
+				var done = assert.async();
+				var $window = $(this.fakeWindow);
+				var states = {
+					'state1' : Main.State( { render: function() { }, destroy: function() { assert.ok( true, 'state1 destroyed '); }} ),
+					'state2' : Main.State( { render: function() { assert.ok(true, 'state2 ran'); done(); }, destroy: function() {}} )
+				};
+				Main.Application( 'state1', {}, states, this.fakeRouter );
+				this.fakeLocation.hash = '#state2';
+				$window.trigger('hashchange');
 			}
 		}
 	},
