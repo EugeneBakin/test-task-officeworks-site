@@ -56,6 +56,10 @@ body {
 	width: 1024px;
 }
 
+.u__widthed--min {
+	min-width: 1024px;
+}
+
 .main-header {    
 	height: 80px;
 	border-bottom: 1px solid #C2C3C5;
@@ -494,6 +498,8 @@ height: 12px;
 .pass-success__link {
 	position: relative;
 	top: 108px;
+	margin-bottom: 120px;
+	display: inline-block;
 }
 
 /* TESTS */
