@@ -12,8 +12,8 @@ $(function () {
 		render: function( globals, action ) {
 
 			var that = this;
+			var section = $('#pass-form');
 			if (!this.rendered) {
-				var section = $('#pass-form');
 				this.clone = section.clone();
 				this.visitorTemplate = section.find('[data-template="pass-visitor"]');
 				this.visitorTemplatePlaceholder = $('<div></div>').insertAfter(this.visitorTemplate).hide();
@@ -82,7 +82,11 @@ $(function () {
 
 				section.find('[data-type="pass"]').on('submit', function (event) {
 					event.preventDefault();
-					action('commit');
+					if ( !globals.pass.checkErrors() ) {
+						action('commit');
+					}	else {
+						that.onChange();
+					}
 				});
 			}
 
@@ -95,24 +99,30 @@ $(function () {
 				var phone = template.find('[data-field="phone"]');
 
 				if(!that.fields.visitors[index]) {
-					name.on('change', function() {
-						globals.pass.visitors[index]['name'] = name.val();
-						that.onChange();
+					name.on('keyup', function() {
+						globals.pass.visitors[index].setName(name.val());
 					});
-					email.on('change', function() {
-						globals.pass.visitors[index]['email'] = email.val();
-						that.onChange();
+					email.on('keyup', function() {
+						globals.pass.visitors[index].setEmail(email.val());
 					});
-					company.on('change', function() {
-						globals.pass.visitors[index]['company'] = company.val();
-						that.onChange();
+					company.on('keyup', function() {
+						globals.pass.visitors[index].setCompany(company.val());
 					});
-					phone.on('change', function() {
-						globals.pass.visitors[index]['phone'] = phone.val();
-						that.onChange();
+					phone.on('keyup', function() {
+						globals.pass.visitors[index].setPhone(phone.val());
 					});
+
+					name.on('change', that.onChange);
+					email.on('change', that.onChange);
+					company.on('change', that.onChange);
+					phone.on('change', that.onChange);
+
 				}
 
+				visitor.errors.name ? name.addClass('u__field-error') : name.removeClass('u__field-error');
+				visitor.errors.email ? email.addClass('u__field-error') : email.removeClass('u__field-error');
+				visitor.errors.phone ? phone.addClass('u__field-error') : phone.removeClass('u__field-error');
+				visitor.errors.company ? company.addClass('u__field-error') : company.removeClass('u__field-error');
 				name.val(visitor.name);
 				email.val(visitor.email);
 				company.val(visitor.company);
@@ -120,6 +130,8 @@ $(function () {
 
 				that.fields.visitors[index] = template;
 			});
+
+
 
 			var startDate = globals.pass.startDate;
 			var endDate = globals.pass.endDate;
@@ -192,7 +204,7 @@ $(function () {
 				};
 			}
 
-			globals.pass.visitors.forEach(function (visitor, index) {
+			globals.pass.getNotEmptyVisitors().forEach(function (visitor, index) {
 				var template = that.fields.visitors[index] || that.visitorTemplate.clone().insertBefore(that.visitorTemplatePlaceholder);
 
 				var name = template.find('[data-field="name"]');

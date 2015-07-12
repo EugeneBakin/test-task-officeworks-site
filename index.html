@@ -113,19 +113,19 @@
 							<div class="pass-form__person" data-type="pass-visitor" data-template="pass-visitor">
 								<label class="pass-form__label">
 									ФИО
-									<input type="text" name="Name[]" data-field="name" value="">
+									<input class="pass-form__input" type="text" name="Name[]" data-field="name" value="">
 								</label>
 								<label class="pass-form__label--half">
 									Телефон
-									<input type="tel" name="Phone[]" data-field="phone">
+									<input class="pass-form__input" type="tel" pattern="[0-9+\s()]*" name="Phone[]" data-field="phone">
 								</label>
 								<label class="pass-form__label--half">
 									Почта
-									<input type="email" name="Email[]" data-field="email">
+									<input class="pass-form__input" type="email" name="Email[]" data-field="email">
 								</label>
 								<label class="pass-form__label" >
 									Компания посетителя
-									<input type="text" name="Company[]" data-field="company">
+									<input class="pass-form__input" type="text" name="Company[]" data-field="company">
 								</label>
 							</div>
 							<button class="button button--link" data-action="add-visitor" type="button">Добавить еще одного пользователя?</button>
@@ -136,11 +136,11 @@
 							</legend>
 							<label class="pass-form__label--half pass-form__field__time-start">
 								Начало действия
-								<input type="text" name="DateStart" value="11.06.2015" data-field="datestart">
+								<input class="pass-form__input" type="text" name="DateStart" value="11.06.2015" data-field="datestart">
 							</label>
 							<label class="pass-form__label--half">
 								Окончание действия
-								<input type="text" name="DateFinish" value="12.06.2015" data-field="datefinish">
+								<input class="pass-form__input" type="text" name="DateFinish" value="12.06.2015" data-field="datefinish">
 							</label>
 							<div>
 								<label>

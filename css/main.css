@@ -207,8 +207,7 @@ main h1 {
 	margin-right: -10px;
 }
 
-.pass-form__label input,
-.pass-form__label--half input {
+.pass-form__input {
 	margin-top: 5px;
 	height: 44px;
 	display: block;
@@ -509,4 +508,11 @@ height: 12px;
 	bottom: 0;
 	right: 0;
 	overflow-y: scroll;
+}
+
+.u__field-error,
+input:invalid:focus,
+input:invalid{
+	border: 1px solid red;
+	box-shadow: none;
 }
