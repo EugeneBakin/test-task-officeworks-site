@@ -36,18 +36,22 @@ $(function () {
 
 				this.fields.startDate.on('change', function () {
 					var date = that.fields.startDate.val().split('.');
-					globals.pass.startDate.setDate(date[0] || 1);
-					globals.pass.startDate.setMonth((date[1] || 1) - 1);
-					globals.pass.startDate.setFullYear(date[2] || 1990);
-					that.onChange();
+					if (+date[0] && +date[1] && +date[2] && date.length===3){
+						globals.pass.startDate.setDate(date[0] || 1);
+						globals.pass.startDate.setMonth((date[1] || 1) - 1);
+						globals.pass.startDate.setFullYear(date[2] || 1990);
+						that.onChange();
+					}
 				});
 
 				this.fields.endDate.on('change', function () {
 					var date = that.fields.endDate.val().split('.');
-					globals.pass.endDate.setDate(date[0] || 1);
-					globals.pass.endDate.setMonth((date[1] || 1) - 1);
-					globals.pass.endDate.setFullYear(date[2] || 1990);
-					that.onChange();
+					if (+date[0] && +date[1] && +date[2] && date.length===3){
+						globals.pass.endDate.setDate(date[0] || 1);
+						globals.pass.endDate.setMonth((date[1] || 1) - 1);
+						globals.pass.endDate.setFullYear(date[2] || 1990);
+						that.onChange();
+					}
 				});
 
 				section.find('[data-action="add-visitor"]').on('click', function () {
@@ -61,7 +65,7 @@ $(function () {
 					var date = new Date();
 					var time = globals.today.getTime() + ( +dateSelect.value ) * 60 * 60 * 24 * 1000;
 
-					if (+dateSelect.value === 0) {
+					if (time === globals.pass.startDate.getTime()) {
 						dateSelect.checked = true;
 					}
 
@@ -131,13 +135,10 @@ $(function () {
 				that.fields.visitors[index] = template;
 			});
 
-
-
-			var startDate = globals.pass.startDate;
-			var endDate = globals.pass.endDate;
-
-			this.fields.startDate.val( formatDate(startDate) );
-			this.fields.endDate.val( formatDate(endDate) );
+			this.fields.startDate.val( formatDate(globals.pass.startDate) );
+			this.fields.endDate.val( formatDate(globals.pass.endDate) );
+			pass.errors.startDate ? this.fields.startDate.addClass('u__field-error') : this.fields.startDate.removeClass('u__field-error');
+			pass.errors.endDate ? this.fields.endDate.addClass('u__field-error') : this.fields.endDate.removeClass('u__field-error');
 
 			if (globals.pass.singleDate) {
 				this.fields.endDate.prop('disabled', 'disabled');

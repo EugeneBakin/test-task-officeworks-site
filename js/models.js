@@ -9,7 +9,8 @@ var Models = {
 
 		visitors = visitors || [];
 
-		return {
+		var pass = {
+			errors: [],
 			visitors: visitors,
 			startDate: startDate,
 			endDate: endDate,
@@ -18,7 +19,10 @@ var Models = {
 			getNotEmptyVisitors: getNotEmptyVisitors
 		};
 
+		return pass;
+
 		function checkErrors() {
+			var hasErrors = false;
 			var notEmptyVisitors = getNotEmptyVisitors();
 			if (!notEmptyVisitors.length) {
 				visitors[0].errors = {
@@ -27,10 +31,19 @@ var Models = {
 					phone: true,
 					email: true
 				}
-				return true;
+				hasErrors = true;
 			}
 
-			return notEmptyVisitors.reduce(function(hasErrors, visitor) { return visitor.checkErrors() || hasErrors; }, false);
+			if (pass.startDate > pass.endDate) {
+				pass.errors.startDate = true;
+				pass.errors.endDate = true;
+				hasErrors = true;
+			} else {
+				pass.errors.startDate = false;
+				pass.errors.endDate = false;
+			}
+
+			return notEmptyVisitors.reduce(function(hasErrors, visitor) { return visitor.checkErrors() || hasErrors; }, false) || hasErrors;
 		}
 
 		function getNotEmptyVisitors() {

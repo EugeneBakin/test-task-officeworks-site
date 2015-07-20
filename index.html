@@ -132,11 +132,11 @@
 							</legend>
 							<label class="pass-form__label--half pass-form__field__time-start">
 								Начало действия
-								<input class="pass-form__input" type="text" name="DateStart" value="11.06.2015" data-field="datestart">
+								<input class="pass-form__input" type="text" name="DateStart" value="11.06.2015" pattern="^(0[1-9]|[12][0-9]|3[01])[\. /.](0[1-9]|1[012])[\. /.](19|20)\d\d$" data-field="datestart">
 							</label>
 							<label class="pass-form__label--half">
 								Окончание действия
-								<input class="pass-form__input" type="text" name="DateFinish" value="12.06.2015" data-field="datefinish">
+								<input class="pass-form__input" type="text" name="DateFinish" value="12.06.2015" pattern="^(0[1-9]|[12][0-9]|3[01])[\. /.](0[1-9]|1[012])[\. /.](19|20)\d\d$" data-field="datefinish">
 							</label>
 							<div>
 								<label>
