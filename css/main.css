@@ -119,6 +119,7 @@ main h1 {
 	padding-top: 135px;
 	padding-left: 10px;
 	padding-right: 10px;
+	background-color: white;
 }
 
 .pass-list__item__image > img{
@@ -175,13 +176,13 @@ main h1 {
 
 .pass-form__fieldset + .pass-form__fieldset{
 	margin-top: 87px;
-
+	padding-top: 15px;
 }
 
 .pass-form__fieldset {
 	background-color: #FFFFFF;
 	border: 1px solid #D4D5D7;
-	padding: 15px 25px 10px 15px;
+	padding: 0 25px 10px 15px;
 }
 
 .pass-form__fieldset__legend {
@@ -196,13 +197,13 @@ main h1 {
 }
 
 .pass-form__label {
-	margin-bottom: 15px;
+	margin-bottom: 17px;
 	display: block;
 }
 
 .pass-form__label--half {
 	display: inline-block;
-	margin-bottom: 15px;
+	margin-bottom: 17px;
 	margin-right: 22px;
 	width: 198px;
 }
@@ -212,7 +213,7 @@ main h1 {
 }
 
 .pass-form__input {
-	margin-top: 5px;
+	margin-top: 4px;
 	height: 44px;
 	display: block;
 	width: 100%;
@@ -221,10 +222,7 @@ main h1 {
 }
 
 .pass-form__person {
-	margin-bottom: 25px;
-}
-
-.pass-form__person:last-of-type {
+	padding-top: 16px;
 	margin-bottom: 7px;
 }
 
@@ -235,7 +233,7 @@ main h1 {
 	margin-left: 3px;
 	margin-right: -9px;
 	position: relative;
-	top: 2px;
+	top: -1px;
 }
 
 .u__radio--just-label {
@@ -444,14 +442,15 @@ main h1 {
 
 
 .button--link {
-border: medium none;
-background: transparent none repeat scroll 0% 0%;
-display: inline;
-width: 100%;
-font-size: 12px;
-color: #2498D1;
-font-weight: 400;
-height: 12px;
+	border: none;
+	background: transparent none repeat scroll 0% 0%;
+	display: inline;
+	width: 100%;
+	font-size: 12px;
+	color: #2498D1;
+	font-weight: 400;
+	height: 20px;
+	line-height: 20px;
 }
 
 .u__background--contrast {
@@ -522,3 +521,6 @@ input:invalid{
 	border: 1px solid red;
 	box-shadow: none;
 }
+
+
+
